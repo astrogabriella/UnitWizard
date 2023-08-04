@@ -2,52 +2,85 @@ let calculator = document.getElementById("unitCalculator");
 let inputBox = document.getElementById("input"); //text-field
 let solution = document.getElementById("solution");
 const flip = document.getElementById("switch");
-let cm = document.getElementById("cm");
-let m = document.getElementById("m");
-const conversions = {
-  length: {
-    meters: 1,
-    cent: 100,
-  },
+let result = document.getElementById("target");
+
+const conversionToMeter = {
+  m: 1,
+  cm: 0.01,
+  mm: 0.001,
+  km: 1000,
+  in: 0.0254,
+  ft: 0.3048,
+  yd: 0.9144,
+  mi: 1609.34,
 };
 
+const conversionsFromMeters = {
+  m: 1,
+  cm: 100,
+  mm: 1000,
+  km: 0.001,
+  in: 39.3701,
+  ft: 3.28084,
+  yd: 1.09361,
+  mi: 0.000621371,
+};
+
+//Creates the dropdown list based on the keys of input dictionary
+function addToDropDown(inputDict, dropType) {
+  let select = document.getElementById(dropType);
+  for (let i in inputDict) {
+    option = document.createElement("option");
+    option.setAttribute("value", i);
+    option.textContent = i;
+    select.appendChild(option);
+  }
+}
+
+let unitPairs = {};
+function setUnitDict(e) {
+  // Setting dictionary pairs based on selected units from each drop down box
+  if (e.target.id == "initialUnit") {
+    let key = (unitPairs["in"] = e.target.value);
+  } else if (e.target.id == "targetUnit") {
+    let value = (unitPairs["out"] = e.target.value);
+  }
+  
+  input = document.getElementById("input").value
+  if (input.length != 0 && unitPairs.in != null && unitPairs.out != null) {
+     conversion(input)
+}}
+
+//search for e.target.value in dict
+function conversion(num) {
+  console.log(unitPairs);
+  let x = conversionToMeter[unitPairs["in"]];
+  let y = conversionsFromMeters[unitPairs["out"]];
+  result = num * x * y;
+  target.value = result
+
+}
+
 //This function only allows numbers to be written in the text field
-
-function forceIntegerInput(e) {
-  inputBox.value = inputBox.value.replace(/[^0-9.]/g, "");
+function onUserInput(e) {
+  e.target.value = e.target.value.replace(/[^0-9.]/g, "");
   //[^0-9] means any character that is not a digit from 0 to 9, g globally and not just the first instance.
-  if (inputBox.value.length != 0) {
-    if (cm.innerText === "cm:") {
-      cmToM();
-    } else if (cm.innerText === "m:") {
-      mToCM();
-    }
-  }
-  //if you enter anything it will stil
-}
 
-function cmToM() {
-  //This rounds up to 7 decimal points
-  solution.value = parseFloat(inputBox.value / 100).toFixed(7);
-}
-
-function mToCM() {
-  //This rounds up to 7 decimal points
-  solution.value = parseFloat(inputBox.value * 100).toFixed(7);
-}
-
-function switchUnits() {
-  if (cm.innerText === "m:") {
-    cm.innerText = "cm:";
-    m.innerText = "m:";
-    inputBox.value = "";
-    solution.value = "";
-  } else if (cm.innerText === "cm:") {
-    cm.innerText = "m:";
-    m.innerText = "cm:";
-    inputBox.value = "";
-    solution.value = "";
+  //Will not produce a resulted error if not all units are selected
+  if (e.target.value.length != 0 && unitPairs.in != null && unitPairs.out != null) {
+    input = e.target.value;
+    conversion(input)
   }
 }
 
-flip.addEventListener("click", switchUnits);
+function resetForm(e){
+  unitPairs= {}
+  console.log(unitPairs)
+}
+
+//This creates the two drop down lists
+window.addEventListener("DOMContentLoaded", () => {
+  addToDropDown(conversionToMeter, "initialUnit");
+  addToDropDown(conversionsFromMeters, "targetUnit");
+});
+
