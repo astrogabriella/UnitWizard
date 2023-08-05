@@ -73,14 +73,53 @@ function onUserInput(e) {
   }
 }
 
+//resets dictionary on reset
 function resetForm(e){
   unitPairs= {}
   console.log(unitPairs)
 }
 
-//This creates the two drop down lists
+const stringToFunc ={
+
+  "+" : (a,b) => {
+      return a+b},
+  "-" : (a,b) => {return a-b},
+  "*": (a,b) => {return a*b},
+  "/": (a,b) => {return a/b}
+
+};
+
+function populateDropDown(){
+  let select = document.querySelector("#select")
+  for (let i in stringToFunc){
+      let option = document.createElement("option")
+      option.setAttribute("id", `option${i}`)
+      option.setAttribute("value", i)
+      option.textContent = i
+      select.appendChild(option)
+}
+}
+
+function customConversion(e){
+
+  let constant = document.querySelector("#constant").value
+  let select = document.querySelector("#select")
+  let conversionFunction = stringToFunc[select.value] 
+  let valueToConvert=document.querySelector("#inputValue").value 
+  let outputValueField = document.querySelector("#outputValue")
+  let result = conversionFunction(Number(valueToConvert),Number(constant))
+
+  if (select.value !== "custom" &&  !isNaN(valueToConvert)  && !isNaN(constant) && valueToConvert!= "" && constant!= ""){
+      outputValueField.value = result
+ }
+
+
+}
+
+window.onload = populateDropDown()
+
+//This creates the two drop down lists on page load
 window.addEventListener("DOMContentLoaded", () => {
   addToDropDown(conversionToMeter, "initialUnit");
   addToDropDown(conversionsFromMeters, "targetUnit");
 });
-

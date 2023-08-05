@@ -20,11 +20,11 @@ body {
 }
 #unitCalculator {
   width: 40em;
-  display: flex;
   height: 35em;
   padding-left: 1em;
-  align-items: center;
-  justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #reset {
@@ -84,6 +84,14 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
-.textfield{
+input{
   width: 10em;
+}
+
+#customContainer{
+display: flex;
+}
+
+#lengthContainer{
+  display: flex;
 }
