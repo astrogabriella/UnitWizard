@@ -16,17 +16,20 @@ body {
     "body"
     "footer";
   height: 100vh;
-  background-color: #444444;
+  background: linear-gradient(43deg, black, #373441);
 }
 #unitCalculator {
-  width: 40em;
+  width: 49em;
   height: 35em;
-  padding-left: 1em;
   display: flex;
+  gap: 0.5em;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-end;
 }
-
+#massContainer{display: flex;}
+#bitContainer{display: flex;}
+#AUContainer{display: flex;}
 #reset {
   width: 4em;
   align-self: center;
@@ -66,12 +69,18 @@ body {
   color: rgb(255, 255, 255);
   text-shadow: black 1px 1px;
   border-right: 2px solid white;
-  padding: 1em 2em 1em 0.5em;
+  padding: 1em 1.5em 1em 0.5em;
+  border-radius: 3em;
 }
 
 #logo {
   width: 118px;
 }
+#resetBtn{
+  display: flex;
+
+}
+
 #reset {
   display: inline-flex;
   align-items: center;
@@ -84,9 +93,18 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
-input{
-  width: 10em;
+select{
+  width: 14em;
+  border-radius: 0.9em;
+  padding-left: 0.6em;
+  height: 2em;
+  border: none;
+  margin-left: 5px;
 }
+input{     width: 14em;
+  border-radius: 0.9em;
+  padding-left: 1em;
+  border: none;margin-left: 5px;}
 
 #customContainer{
 display: flex;
