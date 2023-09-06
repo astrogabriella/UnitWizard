@@ -10,132 +10,193 @@
   <body>
     <div id="container">
       <div id="header">
-      <img id="logo" src="logo.png" />
-      <div id="title">
-        Unit <br />
-        Wizard
+        <img id="logo" src="logo.png" />
+        <div id="title">
+          Unit <br />
+          Wizard
+        </div>
       </div>
-    </div>
 
       <form id="unitCalculator">
-        <div id="lengthContainer">
-        <select class="dropdownContent custom-select" id="initialUnit" oninput="setUnitDict(event)">
-          <option value="" disabled selected>Length</option>
-        </select>
-          
-        <input
-          type="text"
-          id="input"
-          name="input"
-          oninput="onUserInput(event)"
-          class="textfield"
-        />
+        <div id="lengthContainer" class="calculatorGrids">
+          <select
+            class="dropdownContent custom-select inputDrowdown"
+            id="initialUnit"
+            oninput="setUnitDict(event)"
+          >
+            <option value="" disabled selected>Length</option>
+          </select>
 
-        <select class="dropdownContent custom-select"" id="targetUnit" oninput="setUnitDict(event)">
-          <option value="" disabled selected>Target</option>
-        </select>
+          <input
+            type="text"
+            id="input"
+            name="input"
+            oninput="onUserInput(event)"
+            class="textfield inputfield"
+          />
 
-        <input
-          type="text"
-          id="target"
-          name="input"
-          class="textfield"
-          readonly
-        /></div>
+          <select
+            class="dropdownContent custom-select outputDropdown"
+            id="targetUnit"
+            oninput="setUnitDict(event)"
+          >
+            <option value="" disabled selected>Target</option>
+          </select>
 
-        <div id="massContainer">
-          <select class="dropdownContent custom-select" id="initialMass" oninput="setUnitDict(event)">
+          <input
+            type="text"
+            id="target"
+            name="input"
+            class="textfield outputfield"
+            readonly
+          />
+        </div>
+
+        <div id="massContainer" class="calculatorGrids">
+          <select
+            class="dropdownContent custom-select inputDrowdown"
+            id="initialMass"
+            oninput="setUnitDict(event)"
+          >
             <option value="" disabled selected>Mass</option>
           </select>
-  
+
           <input
             type="text"
             id="inputM"
             name="input"
             oninput="onUserInput(event)"
-            class="textfield"
+            class="textfield inputfield"
           />
-  
-          <select class="dropdownContent custom-select" id="targetMass" oninput="setUnitDict(event)">
+
+          <select
+            class="dropdownContent custom-select outputDropdown"
+            id="targetMass"
+            oninput="setUnitDict(event)"
+          >
             <option value="" disabled selected>Target</option>
           </select>
-  
+
           <input
             type="text"
             id="targetM"
             name="input"
-            class="textfield"
+            class="textfield outputfield"
             readonly
-          /></div>
+          />
+        </div>
 
-          <div id="bitContainer">
-            <select class="dropdownContent custom-select" id="initialBit" oninput="setUnitDict(event)">
-              <option value="" disabled selected>Data Size</option>
-            </select>
-    
-            <input
-              type="text"
-              id="inputB"
-              name="input"
-              oninput="onUserInput(event)"
-              class="textfield"
-            />
-    
-            <select class="dropdownContent custom-select" id="targetBit" oninput="setUnitDict(event)">
-              <option value="" disabled selected>Target</option>
-            </select>
-    
-            <input
-              type="text"
-              id="targetB"
-              name="input"
-              class="textfield"
-              readonly
-            /></div>
-
-            <div id="AUContainer">
-              <select class="dropdownContent custom-select" id="initialAU" oninput="setUnitDict(event)">
-                <option value="" disabled selected>Physics Unit</option>
-              </select>
-      
-              <input
-                type="text"
-                id="inputKm"
-                name="input"
-                oninput="onUserInput(event)"
-                class="textfield"
-              />
-      
-              <select class="dropdownContent custom-select" id="targetAU" oninput="setUnitDict(event)">
-                <option value="" disabled selected>Target</option>
-              </select>
-      
-              <input
-                type="text"
-                id="targetKm"
-                name="input"
-                class="textfield"
-                readonly
-              /></div>
-
-
-
-
-        <div id="customContainer">
-        <select class="dropbtn"  name="select" id="select" onchange="customConversion(event)">
-          <option value="custom" id="custom">Custom</option>
+        <div id="bitContainer" class="calculatorGrids">
+          <select
+            class="dropdownContent custom-select inputDrowdown"
+            id="initialBit"
+            oninput="setUnitDict(event)"
+          >
+            <option value="" disabled selected>Data Size</option>
           </select>
-          
-          <input type="text" id="constant" value="" placeholder="Constant" oninput="customConversion(event)">
-          <input type="text" id="inputValue" value="" placeholder="Value" oninput="customConversion(event)">
-          <input type="text" id="outputValue" placeholder="Result" readonly>   <div id="resetBtn">
-            <button type="reset" onclick="resetForm(event)" id="reset"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-              </svg>
-              </button></div>
-      </div>
 
-     
+          <input
+            type="text"
+            id="inputB"
+            name="input"
+            oninput="onUserInput(event)"
+            class="textfield inputfield"
+          />
+
+          <select
+            class="dropdownContent custom-select outputDropdown"
+            id="targetBit"
+            oninput="setUnitDict(event)"
+          >
+            <option value="" disabled selected>Target</option>
+          </select>
+
+          <input
+            type="text"
+            id="targetB"
+            name="input"
+            class="textfield outputfield"
+            readonly
+          />
+        </div>
+
+        <div id="AUContainer" class="calculatorGrids">
+          <select
+            class="dropdownContent custom-select inputDrowdown"
+            id="initialAU"
+            oninput="setUnitDict(event)"
+          >
+            <option value="" disabled selected>Physics Unit</option>
+          </select>
+
+          <input
+            type="text"
+            id="inputKm"
+            name="input"
+            oninput="onUserInput(event)"
+            class="textfield inputfield"
+          />
+
+          <select
+            class="dropdownContent custom-select outputDropdown"
+            id="targetAU"
+            oninput="setUnitDict(event)"
+          >
+            <option value="" disabled selected>Target</option>
+          </select>
+
+          <input
+            type="text"
+            id="targetKm"
+            name="input"
+            class="textfield outputfield"
+            readonly
+          />
+        </div>
+
+        <div id="customContainer" class="calculatorGrids">
+          <select
+            class="dropbtn"
+            name="select"
+            id="select"
+            onchange="customConversion(event)"
+          >
+            <option value="custom" id="custom">Custom</option>
+          </select>
+
+          <input
+            type="text"
+            id="constant"
+            value=""
+            placeholder="Constant"
+            oninput="customConversion(event)"
+          />
+          <input
+            type="text"
+            id="inputValue"
+            value=""
+            placeholder="Value"
+            oninput="customConversion(event)"
+          />
+          <input type="text" id="outputValue" placeholder="Result" readonly />
+          <div id="resetBtn"></div>
+        </div>
+          <button type="reset" onclick="resetForm(event)" id="reset">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+              />
+            </svg>
+          </button>
       </form>
     </div>
     <footer id="footer">&copy;2023 Gabriella Masiha</footer>

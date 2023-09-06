@@ -4,7 +4,6 @@
   margin: 0;
   font-family: "Fira Mono", monospace;
   box-sizing: border-box;
-
 }
 
 html {
@@ -13,11 +12,11 @@ html {
   background-size: 100% 100%;
   background: linear-gradient(43deg, black, #373441);
   background-repeat: no-repeat;
-
 }
 
 body {
-  overflow: auto;
+  width: 100vw;
+  
   display: grid;
   grid-template-rows: 14% 1fr 2%;
   grid-template-areas:
@@ -29,32 +28,24 @@ body {
 
 /* CSS */
 
-
 #unitCalculator {
+  width: 100%;
+  max-width: 40em;
   display: flex;
+  box-sizing: border-box;
   gap: 0.5em;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-}
-#massContainer{    display: flex;
-  gap: 0.1em;}
-#bitContainer{    display: flex;
-  gap: 0.1em;}
-#AUContainer{    display: flex;
-  gap: 0.1em;
-}
-#reset {
-  width: 4em;
-  align-self: center;
+  border: white 2px solid;
+  padding: 1em;
 }
 
-.container1 {
-  margin-top: 5em;
-  margin-left: 2em;
-}
+
+
 
 #container {
+  width: 100vw;
   grid-area: container;
   font-family: Megrim, cursive;
   display: flex;
@@ -63,8 +54,6 @@ body {
   align-items: center;
   gap: 2em;
 }
-
-
 
 #footer {
   grid-area: footer;
@@ -89,14 +78,14 @@ body {
 #logo {
   width: clamp(30px, 118px, 120px);
 }
-#resetBtn{
-  display: flex;
 
+#resetBtn {
+  display: flex;
 }
 
 #reset {
   display: inline-flex;
-  align-items: center;
+  align-items: end;
   justify-content: center;
   width: 2.4em;
   height: 1.8em;
@@ -105,80 +94,61 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  align-self: self-end;
 }
-select{
-  width: clamp(3em, 9.5em, 10em);
+select {
   border-radius: 0.9em;
   padding-left: 0.6em;
   height: 2em;
   border: none;
-  margin-left: 5px;}
+  margin-left: 5px;
+}
 
-
-input{   width: clamp(1em, 7em, 7em);
+input {
   border-radius: 0.9em;
   padding-left: 1em;
   border: none;
-  margin-left: 5px;}
-
-#customContainer{
-display: flex;
-gap: 0.3em;
+  margin-left: 5px;
+  gap: 0.3em;
+  min-width:0;
 }
 
-#lengthContainer{
-    display: flex;
-    gap: 0.1em;
-
-  }
-  
-
-
-#header{display: flex;
+#header {
+  display: flex;
   align-items: center;
 }
 
-@media screen and (max-width: 600px){
 
-  #header{
+
+.calculatorGrids {
+  display: grid;
+  grid-template-columns: 20% 1fr 20% 1fr;
+}
+
+@media screen and (max-width: 1200px) {
+  #header {
     display: flex;
-  
     align-content: center;
     justify-content: center;
+  }
+
+  #container {
+    grid-area: container;
+    font-family: Megrim, cursive;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    gap: 2em;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  #container img {
+    width: clamp(30px, 30px, 120px);
+  }
+
+  #title {
+    font-size: clamp(1em, 3.5em, 3em);
+  }
+
+
 }
-
-
-
-#container{
-  grid-area: container;
-  font-family: Megrim, cursive;
-  display: flex;
-  box-sizing: border-box;
-  align-items: center;
-  gap: 2em;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-}
-
-#container img {
-
-  width: clamp(30px, 30px, 120px);
-}
-
-#title {
-  font-size: clamp(1em, 3.5em, 3em);
-}
-
-
-
-input {
-  width: clamp(1em, 7em, 7em);
-}
-
-
-
-
-
-
