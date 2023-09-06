@@ -70,26 +70,26 @@ const conversionFromBit = {
 };
 
 const KmToAstronomyUnits = {
-  "km": 1,
-  "µm": 1e+9,
-  "nm": 1e+12,
-  "pm": 1e+15,
-  "AU": 1 / 149597870.7,
-  "ly": 1 / 9460730472580.8,
-  "pc": 1 / 3.0856775814913673e+13,
-  "Mm": 1 / 1000,
-  "Gm": 1 / 1e+6
+  km: 1,
+  µm: 1e9,
+  nm: 1e12,
+  pm: 1e15,
+  AU: 1 / 149597870.7,
+  ly: 1 / 9460730472580.8,
+  pc: 1 / 3.0856775814913673e13,
+  Mm: 1 / 1000,
+  Gm: 1 / 1e6,
 };
 const AstronomyUnitsToKm = {
-  "km": 1,
-  "µm": 1e-9,
-  "nm": 1e-12,
-  "pm": 1e-15,
-  "AU": 149597870.7,
-  "ly": 9460730472580.8,
-  "pc": 3.0856775814913673e+13,
-  "Mm": 1000,
-  "Gm": 1e+6
+  km: 1,
+  µm: 1e-9,
+  nm: 1e-12,
+  pm: 1e-15,
+  AU: 149597870.7,
+  ly: 9460730472580.8,
+  pc: 3.0856775814913673e13,
+  Mm: 1000,
+  Gm: 1e6,
 };
 
 //Creates the dropdown list based on the keys of input dictionary
@@ -105,8 +105,8 @@ function addToDropDown(inputDict, dropType) {
 
 let lengthPairs = {};
 let massPairs = {};
-let bitPairs = {}
-let AUPairs ={}
+let bitPairs = {};
+let AUPairs = {};
 
 function setUnitDict(e) {
   // Setting dictionary pairs based on selected units from each drop down box
@@ -118,25 +118,20 @@ function setUnitDict(e) {
     let key = (massPairs["in"] = e.target.value);
   } else if (e.target.id == "targetMass") {
     let value = (massPairs["out"] = e.target.value);
-  } else if (e.target.id == "initialBit"){
+  } else if (e.target.id == "initialBit") {
     let key = (bitPairs["in"] = e.target.value);
-  }
-  else if (e.target.id == "targetBit"){
+  } else if (e.target.id == "targetBit") {
     let value = (bitPairs["out"] = e.target.value);
+  } else if (e.target.id == "initialAU") {
+    let key = (AUPairs["in"] = e.target.value);
+  } else if (e.target.id == "targetAU") {
+    let value = (AUPairs["out"] = e.target.value);
   }
- else if (e.target.id == "initialAU"){
-  let key = (AUPairs["in"] = e.target.value);
-}
-else if (e.target.id == "targetAU"){
-  let value = (AUPairs["out"] = e.target.value);
+
+  doConversion();
 }
 
-  doConversion()
-  
-}
-
-function doConversion(){
-
+function doConversion() {
   if (
     document.getElementById("input").value.length != 0 &&
     lengthPairs.in != null &&
@@ -165,39 +160,35 @@ function doConversion(){
       massPairs
     );
   }
-  if (document.getElementById("inputB").value.length != 0 &&
-  bitPairs.in != null &&
-  bitPairs.out != null
-  ){
+  if (
+    document.getElementById("inputB").value.length != 0 &&
+    bitPairs.in != null &&
+    bitPairs.out != null
+  ) {
     conversionGeneral(
       document.getElementById("inputB").value,
       document.getElementById("targetB"),
       conversionToBit,
       conversionFromBit,
       bitPairs
-    )
+    );
   }
-  if (document.getElementById("inputKm").value.length != 0 &&
-  AUPairs.in != null &&
-  AUPairs.out != null
-  ){
+  if (
+    document.getElementById("inputKm").value.length != 0 &&
+    AUPairs.in != null &&
+    AUPairs.out != null
+  ) {
     conversionGeneral(
       document.getElementById("inputKm").value,
       document.getElementById("targetKm"),
       AstronomyUnitsToKm,
       KmToAstronomyUnits,
       AUPairs
-    )
+    );
   }
-
-
-
-
 }
 
-
 //search for e.target.value in dict
-
 function conversionGeneral(num, resultTextField, inDict, outDict, pairsDict) {
   console.log(pairsDict);
   let x = inDict[pairsDict["in"]];
@@ -207,30 +198,20 @@ function conversionGeneral(num, resultTextField, inDict, outDict, pairsDict) {
   resultTextField.value = result;
 }
 
-
-
-
 //This function only allows numbers to be written in the text field
 function onUserInput(e) {
   e.target.value = e.target.value.replace(/[^0-9.]/g, "");
   //[^0-9] means any character that is not a digit from 0 to 9, g globally and not just the first instance.
 
-  doConversion()
-
-
-
+  doConversion();
 }
-
-
-
-
-
-
 
 //resets dictionary on reset
 function resetForm(e) {
   massPairs = {};
   lengthPairs = {};
+  AUPairs = {};
+  bitPairs = {};
 }
 
 const stringToFunc = {
@@ -288,6 +269,6 @@ window.addEventListener("DOMContentLoaded", () => {
   addToDropDown(conversionFromKg, "targetMass");
   addToDropDown(conversionToBit, "initialBit");
   addToDropDown(conversionFromBit, "targetBit");
-  addToDropDown(AstronomyUnitsToKm, "initialAU")
-  addToDropDown(KmToAstronomyUnits, "targetAU")
+  addToDropDown(AstronomyUnitsToKm, "initialAU");
+  addToDropDown(KmToAstronomyUnits, "targetAU");
 });

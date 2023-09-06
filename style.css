@@ -7,29 +7,43 @@
 
 }
 
+html {
+  height: 100%;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  background: linear-gradient(43deg, black, #373441);
+  background-repeat: no-repeat;
+
+}
+
 body {
+  overflow: auto;
   display: grid;
-  grid-template-rows: 20% auto 1fr 5%;
+  grid-template-rows: 14% 1fr 2%;
   grid-template-areas:
     "."
     "container"
-    "body"
     "footer";
-  height: 100vh;
-  background: linear-gradient(43deg, black, #373441);
+  height: 100%;
 }
+
+/* CSS */
+
+
 #unitCalculator {
-  width: 49em;
-  height: 35em;
   display: flex;
   gap: 0.5em;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: stretch;
 }
-#massContainer{display: flex;}
-#bitContainer{display: flex;}
-#AUContainer{display: flex;}
+#massContainer{    display: flex;
+  gap: 0.1em;}
+#bitContainer{    display: flex;
+  gap: 0.1em;}
+#AUContainer{    display: flex;
+  gap: 0.1em;
+}
 #reset {
   width: 4em;
   align-self: center;
@@ -47,11 +61,10 @@ body {
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
+  gap: 2em;
 }
 
-#mainBody {
-  grid-area: body;
-}
+
 
 #footer {
   grid-area: footer;
@@ -65,7 +78,7 @@ body {
 }
 
 #title {
-  font-size: clamp(2em, 4em, 5em);
+  font-size: clamp(1em, 4em, 4em);
   color: rgb(255, 255, 255);
   text-shadow: black 1px 1px;
   border-right: 2px solid white;
@@ -74,7 +87,7 @@ body {
 }
 
 #logo {
-  width: 118px;
+  width: clamp(30px, 118px, 120px);
 }
 #resetBtn{
   display: flex;
@@ -94,22 +107,78 @@ body {
   cursor: pointer;
 }
 select{
-  width: 14em;
+  width: clamp(3em, 9.5em, 10em);
   border-radius: 0.9em;
   padding-left: 0.6em;
   height: 2em;
   border: none;
-  margin-left: 5px;
-}
-input{     width: 14em;
+  margin-left: 5px;}
+
+
+input{   width: clamp(1em, 7em, 7em);
   border-radius: 0.9em;
   padding-left: 1em;
-  border: none;margin-left: 5px;}
+  border: none;
+  margin-left: 5px;}
 
 #customContainer{
 display: flex;
+gap: 0.3em;
 }
 
 #lengthContainer{
-  display: flex;
+    display: flex;
+    gap: 0.1em;
+
+  }
+  
+
+
+#header{display: flex;
+  align-items: center;
 }
+
+@media screen and (max-width: 600px){
+
+  #header{
+    display: flex;
+  
+    align-content: center;
+    justify-content: center;
+}
+
+
+
+#container{
+  grid-area: container;
+  font-family: Megrim, cursive;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: 2em;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+}
+
+#container img {
+
+  width: clamp(30px, 30px, 120px);
+}
+
+#title {
+  font-size: clamp(1em, 3.5em, 3em);
+}
+
+
+
+input {
+  width: clamp(1em, 7em, 7em);
+}
+
+
+
+
+
+
