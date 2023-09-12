@@ -18,7 +18,7 @@ body {
   width: 100vw;
   
   display: grid;
-  grid-template-rows: 14% 1fr 2%;
+  grid-template-rows: 4% 1fr 2%;
   grid-template-areas:
     "."
     "container"
@@ -143,7 +143,7 @@ input {
     justify-content: flex-start;
   }
   #container img {
-    width: clamp(30px, 30px, 120px);
+    width: clamp(80px, 80px, 120px);
   }
 
   #title {
