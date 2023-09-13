@@ -37,7 +37,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  border: white 2px solid;
   padding: 1em;
 }
 
